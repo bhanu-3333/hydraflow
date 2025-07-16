@@ -163,78 +163,78 @@ body.active {
 	height: 100vh;
 	top: 0;
 	left: 0;
+	background: #b9b3a9;
+	transition: 0.6s cubic-bezier(0.82, 0.05, 0.39, 0.88);
+	z-index: 9999;
 	overflow: hidden;
-	background:#b9b3a9;
-	transition: .6s cubic-bezier(0.82, 0.05, 0.39, 0.88);
-	z-index: 3;
 }
 
 .preloader.active {
 	left: -100%;
-	transition-delay: .7s;
+	transition-delay: 0.7s;
 }
 
 .preloader__box {
 	position: relative;
-	width: 250px;
-	height: 250px;
+	width: clamp(150px, 30vw, 250px);
+	height: clamp(150px, 30vw, 250px);
 	text-align: center;
 	border-radius: 50%;
 }
 
 .preloader__box span {
 	position: absolute;
-	display: inline-block;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: 130px;
+	font-size: clamp(40px, 9vw, 130px);
 	text-transform: uppercase;
 	color: #b9b3a9;
 	mix-blend-mode: difference;
-	font-family: var(--font-monExtra);
+	font-family: var(--font-monExtra, sans-serif);
 	z-index: 2;
+	white-space: nowrap;
 }
 
-.preloader__box:before {
-	position: absolute;
+.preloader__box::before {
 	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
 	width: 100%;
 	height: 100%;
 	background: #000;
-	top: 50%;
-	left: 50%;
 	border-radius: 50%;
-	transform: translate(-50%, -50%) scale(.55);
-	transition: 4s;
+	transform: translate(-50%, -50%) scale(0.55);
+	transition: 4s ease;
 }
 
-.preloader__box.active:before {
+.preloader__box.active::before {
 	transform: translate(-50%, -50%) scale(100);
 }
 
 .preloader__txt {
 	position: absolute;
-	bottom: 2vw;
-	left: 2vw;
+	bottom: 5vw;
+	left: 5vw;
 	color: #fff;
 	text-transform: uppercase;
-	font-size: 2vw;
+	font-size: clamp(12px, 3vw, 24px);
 	mix-blend-mode: difference;
-	transition: .3s;
+	transition: 0.3s;
 }
 
 .preloader__txt.active {
 	letter-spacing: 3px;
 }
 
-.preloader__txt:before {
-	position: absolute;
+.preloader__txt::before {
 	content: '';
-	width: 20px;
-	height: 20px;
-	top: -9px;
-	right: -21px;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: -8px;
+	right: -20px;
 	border: 2px solid #fff;
 	border-top-color: transparent;
 	border-bottom-color: transparent;
@@ -243,23 +243,26 @@ body.active {
 	animation: spin 1s infinite linear;
 }
 
-.preloader__txt.active:before {
+.preloader__txt.active::before {
 	animation: spin-active 1s infinite linear;
 }
 
+/* Animations */
 @keyframes spin {
 	from {
-		transform: rotate(0);
+		transform: rotate(0deg);
 	}
-
 	to {
 		transform: rotate(360deg);
 	}
 }
 
 @keyframes spin-active {
+	0% {
+		transform: rotate(360deg);
+	}
 	100% {
-		transform: rotate(0);
+		transform: rotate(0deg);
 	}
 }
 
@@ -742,6 +745,7 @@ body.active {
   gap: 30px;
   max-width: 1100px;
   margin: auto;
+  padding: 20px;
 }
 
 .popular__card {
@@ -762,13 +766,11 @@ body.active {
   transition: transform 0.4s ease;
 }
 
-/* Slide image upward on hover */
 .popular__card:hover .popular__img {
   transform: scale(1.1) translateY(-10px);
   filter: brightness(0.85);
 }
 
-/* Info box styling */
 .popular__info {
   position: absolute;
   bottom: -100px;
@@ -781,7 +783,6 @@ body.active {
   transition: bottom 0.4s ease;
 }
 
-/* On hover: reveal info box */
 .popular__card:hover .popular__info {
   bottom: 0;
 }
@@ -789,7 +790,7 @@ body.active {
 .popular__info h3 {
   font-size: 1.5rem;
   color: #fff;
-  margin: 0 0 10px;
+  margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
 }
@@ -809,6 +810,7 @@ body.active {
   background: #222;
   color: #fff;
 }
+
 
 
 /******** section-about ********/
@@ -1560,6 +1562,41 @@ body.active {
 		padding: 0 25px;
 		margin-bottom: 25px;
 	}
+
+	@media (max-width: 900px) {
+  .popular__card {
+    width: 100%;
+    height: 450px;
+  }
+
+  .popular__wrapp {
+    gap: 20px;
+  }
+
+  .popular__info h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .popular__card {
+    height: 400px;
+  }
+
+  .popular__info {
+    padding: 15px;
+  }
+
+  .popular__info h3 {
+    font-size: 1.1rem;
+  }
+
+  .popular__info button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
 }
 
 /***======================= 3.MEDIA-SETTINGS-END =======================***/
