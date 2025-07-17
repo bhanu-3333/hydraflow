@@ -594,6 +594,7 @@ body.active {
 	text-align: right;
 }
 
+
 .header__title span:nth-child(1),
 .header__title span:nth-child(3) {
 	color: transparent;
