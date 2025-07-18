@@ -594,7 +594,6 @@ body.active {
 	text-align: right;
 }
 
-
 .header__title span:nth-child(1),
 .header__title span:nth-child(3) {
 	color: transparent;
@@ -647,6 +646,8 @@ body.active {
 	font-style: italic;
 	line-height: .9;
 }
+
+
 
 /**********************/
 .header__bott {
