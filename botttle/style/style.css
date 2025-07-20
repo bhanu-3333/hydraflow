@@ -640,6 +640,8 @@ body.active {
 	right: 5vw;
 }
 
+
+
 .header__num span {
 	font-size: var(--font-size-num);
 	font-family: var(--font-monExtra);
